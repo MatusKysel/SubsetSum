@@ -12,9 +12,10 @@ else()
     add_compile_options(-Wall -Wextra -pedantic -Werror)
 endif()
 
+add_executable(subset_sum subset_sum.cc)
 
 ## BOOST
-# find_package(Boost 1.71.0 REQUIRED system)
-# include_directories(${Boost_INCLUDE_DIRS})
-add_executable(subset_sum subset_sum.cc)
-# target_link_libraries(subset_sum ${Boost_LIBRARIES})
+find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+add_executable(test tests.cc)
+target_link_libraries(test ${Boost_LIBRARIES})
