@@ -2,7 +2,6 @@
 #include <cstdint>
 #include <iostream>
 #include <numeric>
-#include <set>
 #include <vector>
 
 /*
@@ -40,11 +39,8 @@ in ascending order.
 
 inline void find_largest_sum(uint64_t T, const std::vector<uint64_t> &I,
                              std::vector<uint64_t> &M, uint64_t &S) {
-  // get sorted unique numbers
-  const std::set<uint64_t> set(I.begin(), I.end());
-  // move set back to vector
-  const std::vector<uint64_t> nums(std::make_move_iterator(set.begin()),
-                                   std::make_move_iterator(set.end()));
+  std::vector<uint64_t> nums(I.begin(), I.end());
+  std::sort(nums.begin(), nums.end()); // sorting the array
 
   const size_t num_of_elements = nums.size(); // number of objects
 

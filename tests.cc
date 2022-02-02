@@ -56,3 +56,14 @@ BOOST_AUTO_TEST_CASE(less_than_target) {
   const std::vector<uint64_t> answer{3, 4, 6, 7};
   BOOST_TEST(output == answer);
 }
+
+BOOST_AUTO_TEST_CASE(multiple_elements) {
+  const std::vector<uint64_t> input{5, 5, 1, 1, 2};
+  std::vector<uint64_t> output;
+  const uint64_t target = 10;
+  uint64_t sum;
+  find_largest_sum(target, input, output, sum);
+  BOOST_CHECK_EQUAL(sum, target);
+  const std::vector<uint64_t> answer{5, 5};
+  BOOST_TEST(output == answer);
+}
